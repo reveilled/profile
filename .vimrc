@@ -18,9 +18,9 @@ set foldlevelstart=10
 
 "put backups in the tmp directory
 set backup
-set backupdir=/tmp/.vimtmp
+set backupdir=./.backup,/tmp,.
 set backupskip=/tmp/*
-set directory=/tmp/.vimtmp
+set directory=./.backup,/tmp,.
 set writebackup
 
 set mouse=a
