@@ -62,4 +62,16 @@ untargz_subdirs_of(){
 
 }
 
+#dump last n commands to a script
+# param 1 = number of commands
+# param 2 = file to dump to
+hist_to_script()
+{
+	local out_file=$2
+	local num_commands=$1
+	local hist_num=$((num_commands + 1))
+
+    history $hist_num | head -$num_commands | sed 's/^ *[0-9]* *//' > $out_file
+}
+
 load_os_settings
