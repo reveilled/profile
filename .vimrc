@@ -7,7 +7,6 @@ set noexpandtab
 set wrap
 set ai
 set cursorline
-filetype indent on " indent by filetype
 set showmatch " highlight matching brackets, etc
 
 set wildmenu " autocomplete
@@ -27,3 +26,9 @@ set mouse=a
 set number
 set ignorecase
 syntax on
+filetype on
+filetype plugin on
+filetype indent on " indent by filetype
+
+autocmd FileType py set expandtab
+autocmd FileType make set noexpandtab softtabstop=0
