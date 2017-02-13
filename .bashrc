@@ -21,12 +21,12 @@ load_osx_settings()
 
 load_linux_settings()
 {
-	export PS1="\[\033[96m\][\t]\[\033[00m\] \h:\W \u\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
+	export PS1="\[\033[96m\][\t]\[\033[00m\] \h:\w \u\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
 	export PS2="and then... >"
 	unixish_aliases
 
 	#use pigz instead of gzip
-	if which pigz; then alias gzip=pigz; else echo Pigz is not installed, consider installing it; fi
+	if which pigz > /dev/null; then alias gzip=pigz; else echo Pigz is not installed, consider installing it; fi
 }
 
 load_os_settings(){
