@@ -21,6 +21,7 @@ load_osx_settings()
 
 load_linux_settings()
 {
+	source /etc/skel/.bashrc > /dev/null
 	export PS1="\[\033[96m\][\t]\[\033[00m\] \h:\w \u\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
 	export PS2="and then... >"
 	unixish_aliases
