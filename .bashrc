@@ -21,7 +21,8 @@ load_osx_settings()
 
 load_linux_settings()
 {
-	export PS1="\[\033[96m\][\t]\[\033[00m\] \h:\w \u\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
+	source /etc/skel/.bashrc > /dev/null
+	export PS1="\[\033[96m\][\t]\[\033[00m\] \u@\h:\w \[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
 	export PS2="and then... >"
 	unixish_aliases
 
@@ -46,7 +47,7 @@ fi
 targz_subdirs_of()
 {
 	pushd $1 > /dev/null
-	for f in `find . -type d -mindepth 1 -maxdepth 1`;
+	for f in `find . -mindepth 1 -maxdepth 1 -type d`;
 	do tar -czf $f.tar.gz $f;
 		rm -rf $f;
 	done
