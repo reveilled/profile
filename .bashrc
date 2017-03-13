@@ -1,3 +1,6 @@
+#do nothing if not interactive
+[[ $- == *i* ]] || return
+
 parse_git_branch(){
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
@@ -73,6 +76,20 @@ hist_to_script()
 	local hist_num=$((num_commands + 1))
 
     history $hist_num | head -$num_commands | sed 's/^ *[0-9]* *//' > $out_file
+}
+
+replace_string_in_file()
+{
+	local old_str=$1
+	local new_str=$2
+	local target_file=$3
+	sed 's/$old_str/$new_str/g' $target_file > /tmp/edit-$target_file
+	mv /tmp/edit-$target_file $target_file
+}
+
+pause_for_user_input()
+{
+	read -n1 -r -p "Press any key to continue..." key
 }
 
 load_os_settings
