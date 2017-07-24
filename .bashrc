@@ -75,4 +75,9 @@ hist_to_script()
     history $hist_num | head -$num_commands | sed 's/^ *[0-9]* *//' > $out_file
 }
 
+load_to_clipboard()
+{
+	cat $1 | xclip -selection c
+}
+
 load_os_settings
