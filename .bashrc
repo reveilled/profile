@@ -80,4 +80,9 @@ load_to_clipboard()
 	cat $1 | xclip -selection c
 }
 
+todays_logins()
+{
+	cat /var/log/auth.log | grep keyring | grep "`date +"%b %e"`" | cut -d ' ' -f 4
+}
+
 load_os_settings
