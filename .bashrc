@@ -1,3 +1,14 @@
+
+
+append_path_if_present()
+{
+	if [ -d $1 ]; then
+		export PATH=$1:$PATH
+	else
+		echo $1 not present to add to path
+	fi
+}
+
 parse_git_branch(){
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
@@ -25,6 +36,10 @@ load_linux_settings()
 	export PS1="\[\033[96m\][\t]\[\033[00m\] \u@\h:\w \[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
 	export PS2="and then... >"
 	unixish_aliases
+
+	append_path_if_present /opt/platform-tools
+	append_path_if_present /opt/ida-6.95
+	append_path_if_present /opt/pycharm-community-2017.2.1/bin
 
 	#use pigz instead of gzip
 	if which pigz > /dev/null; then alias gzip=pigz; else echo Pigz is not installed, consider installing it; fi
