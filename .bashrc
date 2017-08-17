@@ -97,7 +97,7 @@ load_to_clipboard()
 
 todays_logins()
 {
-	cat /var/log/auth.log | grep keyring | grep "`date +"%b %e"`" | cut -d ' ' -f 4
+	cat /var/log/auth.log | grep keyring | grep "`date +"%b %e"`" | tr -s ' ' | cut -d ' ' -f 3
 }
 
 load_os_settings
