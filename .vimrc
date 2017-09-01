@@ -22,7 +22,7 @@ set backupskip=/tmp/*
 set directory=./.backup,/tmp,.
 set writebackup
 
-set mouse=a
+set mouse=v
 set number
 set ignorecase
 syntax on
