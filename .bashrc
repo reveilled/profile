@@ -22,6 +22,15 @@ unixish_aliases()
 	alias la="ls -a"
 }
 
+optional_alias()
+{
+	#Param 1 - alias
+	#Param 2 - program to look for
+	#Param 3 - warning if not installed
+
+	if which $2 > /dev/null; then alias $1=$2; else echo $3; fi
+}
+
 load_osx_settings()
 {
 	echo "Loading OSX settings..."
@@ -42,7 +51,11 @@ load_linux_settings()
 	append_path_if_present /opt/pycharm-community-2017.2.1/bin
 
 	#use pigz instead of gzip
-	if which pigz > /dev/null; then alias gzip=pigz; else echo Pigz is not installed, consider installing it; fi
+	optional_alias gzip pigz "pigz is not installed, consider installing it for parallel zipping"
+	optional_alias cp gcp "gcp is not installed, consider installing it for more modern copying"
+#	if which pigz > /dev/null; then alias gzip=pigz; else echo Pigz is not installed, consider installing it; fi
+#	alias cp_old=`which cp`
+#	alias cp="rsync -av "
 }
 
 load_os_settings(){
