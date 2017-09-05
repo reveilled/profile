@@ -113,4 +113,9 @@ todays_logins()
 	cat /var/log/auth.log | grep keyring | grep "`date +"%b %e"`" | tr -s ' ' | cut -d ' ' -f 3
 }
 
+helpless()
+{
+	$@ --help | less
+}
+
 load_os_settings
