@@ -1,4 +1,5 @@
-
+#do nothing if not interactive
+[[ $- == *i* ]] || return
 
 append_path_if_present()
 {
@@ -43,6 +44,7 @@ load_osx_settings()
 load_linux_settings()
 {
 	source /etc/skel/.bashrc > /dev/null
+
 	export PS1="\[\033[96m\][\t]\[\033[00m\] \u@\h:\w \[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
 	export PS2="and then... >"
 	unixish_aliases
@@ -122,6 +124,19 @@ helpless()
 tar_dir_copy()
 {
 	tar c $1 | tar x -C $2
+
+replace_string_in_file()
+{
+	local old_str=$1
+	local new_str=$2
+	local target_file=$3
+	sed 's/$old_str/$new_str/g' $target_file > /tmp/edit-$target_file
+	mv /tmp/edit-$target_file $target_file
+}
+
+pause_for_user_input()
+{
+	read -n1 -r -p "Press any key to continue..." key
 }
 
 load_os_settings
