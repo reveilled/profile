@@ -20,6 +20,7 @@ unixish_aliases()
 	alias llah="ls -alh"
 	alias lah="ls -ah"
 	alias la="ls -a"
+	alias less="less -r"
 }
 
 optional_alias()
@@ -116,6 +117,11 @@ todays_logins()
 helpless()
 {
 	$@ --help | less
+}
+
+tar_dir_copy()
+{
+	tar c $1 | tar x -C $2
 }
 
 load_os_settings
