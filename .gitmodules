@@ -1,0 +1,6 @@
+[submodule "gef"]
+	path = gef
+	url = https://github.com/hugsy/gef.git
+[submodule "binwalk"]
+	path = binwalk
+	url = https://github.com/ReFirmLabs/binwalk.git
