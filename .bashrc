@@ -58,6 +58,10 @@ load_linux_settings()
 	export PS2="and then... >"
 	unixish_aliases
 
+	#set vim as default editor
+	export VISUAL=vim
+	export EDITOR="$VISUAL"
+
 	#use pigz instead of gzip
 	optional_alias gzip pigz "pigz is not installed, consider installing it for parallel zipping"
 	optional_alias cp gcp "gcp is not installed, consider installing it for more modern copying"
@@ -113,7 +117,8 @@ hist_to_script()
 
 load_to_clipboard()
 {
-	cat $1 | xclip -selection c
+	#load things up to all the clipboards
+	cat $1 | xclip -i -f -sel p | xclip -i -sel c
 }
 
 todays_logins()

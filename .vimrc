@@ -30,7 +30,7 @@ set splitbelow
 set wildignore=*.o,*~,*.pyc
 set noerrorbells
 set novisualbell
-set ff=unix,dos,mac
+set ffs=unix,dos,mac
 set encoding=utf8
 set lbr
 set tw=500
@@ -47,6 +47,6 @@ autocmd FileType py set expandtab
 autocmd FileType make set noexpandtab softtabstop=0
 
 "handle a large number of files open
-set tabpagemax 100
+set tabpagemax=100
 
 set diffopt=filler,context:0
